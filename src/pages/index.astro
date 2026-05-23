@@ -136,6 +136,9 @@ import Layout from '../layouts/Layout.astro';
   import { loadSlim } from '@tsparticles/slim';
 
   await loadSlim(tsParticles);
+
+  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+
   await tsParticles.load({
     id: 'tsparticles',
     options: {
