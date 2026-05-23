@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Austin Ban | Nashville based web developer, web designer, and storyteller" showFooterTopper={false}>
   <a id="awwwards-img" href="http://www.awwwards.com/" aria-label="Awwwards Site Of The Day Nominee"></a>
-  <section class="hero-section" aria-hidden="true"></section>
+  <div id="tsparticles" class="hero-section"></div>
   <div class="huge-wrap">
     <div class="text">
       <h1 class="huge constrain">I create solutions to people's problems.</h1>
@@ -130,4 +130,49 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 
+
+<script>
+  import { tsParticles } from '@tsparticles/engine';
+  import { loadSlim } from '@tsparticles/slim';
+
+  await loadSlim(tsParticles);
+  await tsParticles.load({
+    id: 'tsparticles',
+    options: {
+      fullScreen: { enable: false },
+      background: { color: { value: 'transparent' } },
+      fpsLimit: 120,
+      particles: {
+        number: { value: 80, density: { enable: true, width: 800 } },
+        paint: {
+          fill: { color: { value: '#eeab12' }, enable: true, opacity: 1 },
+        },
+        shape: { type: 'circle' },
+        size: { value: { min: 10, max: 20 } },
+        links: { enable: false },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: 'top',
+          random: false,
+          straight: false,
+          outModes: { default: 'out' },
+        },
+      },
+      interactivity: {
+        detectsOn: 'canvas',
+        events: {
+          onHover: { enable: true, mode: 'repulse' },
+          onClick: { enable: true, mode: 'push' },
+          resize: { enable: true },
+        },
+        modes: {
+          repulse: { distance: 200, duration: 0.4 },
+          push: { quantity: 4 },
+        },
+      },
+      detectRetina: true,
+    },
+  });
+</script>
 </Layout>
