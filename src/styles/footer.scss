@@ -1,0 +1,43 @@
+@use 'sass:color';
+
+.footer {
+  background-color: #fe826a;
+  color: $cream;
+  text-align: center;
+  p {
+    font-size: 1rem;
+    padding-top: 15px;
+  }
+  ul {
+    padding: 0 20%;
+    margin-top: 20px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    li {
+      text-align: center;
+      display: table-cell;
+      font-size: 1.5rem;
+      font-weight: 400;
+      a {
+        padding: 10px;
+        color: $cream !important;
+        transition: color 0.5s;
+        font-family: "cooper_hewittheavy", Arial-black, Arial;
+        &:hover {
+          color: color.adjust($cream, $lightness: 10%) !important;
+        }
+      }
+      &:hover {
+        animation: tottle 0.2s cubic-bezier(0.34, 0.01, 0.18, 1.35);
+      }
+    }
+  }
+  .topper {
+    background: linear-gradient(to bottom, $story-yellow, $dusty-pink);
+    height: 50px;
+  }
+  .row {
+    padding: 10px 10%;
+  }
+}

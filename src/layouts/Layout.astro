@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/style.scss';
+import 'aos/dist/aos.css';
+
+interface Props {
+  title: string;
+  showFooterTopper?: boolean;
+}
+
+const { title, showFooterTopper = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+    ──────▄▀▄─────▄▀▄
+    ─────▄█░░▀▀▀▀▀░░█▄
+    ─▄▄──█░░░░░░░░░░░█──▄▄
+    █▄▄█─█░░▀░░┬░░▀░░█─█▄▄█ Hi there. -Austin Ban
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="description" content="I am a Nashville based web developer, web designer, and storyteller. I build beautiful websites to help others tell their story." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Nashville based web developer, designer, and storyteller." />
+    <meta property="og:image" content="/images/austin.jpg" />
+    <meta name="theme-color" content="#fe826a" />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" />
+  </head>
+  <body class="container">
+    <div class="full-wrap">
+      <main>
+        <slot />
+      </main>
+      <Header />
+      <Footer showTopper={showFooterTopper} />
+    </div>
+
+    <script>
+      import AOS from 'aos';
+      AOS.init({ duration: 1200 });
+
+      window.addEventListener('load', () => {
+        const loader = document.querySelector<HTMLElement>('.loader');
+        if (loader) {
+          loader.style.transition = 'opacity 0.8s';
+          loader.style.opacity = '0';
+          setTimeout(() => { loader.style.display = 'none'; }, 800);
+        }
+      });
+    </script>
+  </body>
+</html>

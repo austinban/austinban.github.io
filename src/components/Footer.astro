@@ -1,0 +1,26 @@
+---
+interface Props {
+  showTopper?: boolean;
+}
+const { showTopper = true } = Astro.props;
+---
+<div class="footer row" style={showTopper ? '' : 'padding-top: 35px;'}>
+  {showTopper && <div class="topper"></div>}
+  <div class="pad-sides row">
+    <div class="small-12" style="text-align: center;">
+      <a href="mailto:banaustinban@gmail.com" class="round-button">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/in/austin-ban-4b719a89" class="round-button">
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+      </a>
+      <a target="_blank" href="https://github.com/austinban" class="round-button">
+        <i class="fa fa-github" aria-hidden="true"></i>
+      </a>
+    </div>
+    <div class="small-12">
+      <p>Made by Austin Ban with the help of matcha and Vivaldi.</p>
+      <a target="_blank" href="/images/AustinBanResume.pdf" class="round-button">See My Résumé</a>
+    </div>
+  </div>
+</div>
